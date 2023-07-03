@@ -41,7 +41,7 @@ function Navbar() {
     <nav style={styles.nav}>
       <div style={styles.logoTitle}>
         <img style={styles.logo} src="logo_url_here" alt="Logo" /> {/* Replace "logo_url_here" with the url of your logo */}
-        <h1>Title</h1> {/* Replace "Title" with the title of your application */}
+        <h1>Virtuso</h1> {/* Replace "Title" with the title of your application */}
       </div>
       {['/', '/explore', '/lesson', '/dashboard'].map((path, index) => (
         <Link 

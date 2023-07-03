@@ -2,7 +2,7 @@ import React from 'react';
 
 const styles = {
   container: {
-    border: '1px solid #333',
+    border: '1px solid #007BFF', // updated border color to match title
     borderRadius: '10px',
     padding: '10px',
     maxWidth: '400px',
@@ -27,7 +27,7 @@ const styles = {
   },
   title: {
     textAlign: 'center',
-    color: '#333',
+    color: '#007BFF', // updated title color to match other titles
   },
 };
 

@@ -1,18 +1,16 @@
-// src/pages/HomePage.js
 import React from 'react';
 
 const styles = {
   main: {
     fontFamily: 'Arial, sans-serif',
     color: '#333',
-    backgroundColor: '#f8f9fa',
+    backgroundColor: '#1b1b2f',  // dark background for a modern and futuristic feel
   },
   hero: {
     textAlign: 'center',
     padding: '50px 0',
     color: '#fff',
-    // Uncomment and add the path to your image
-    // backgroundImage: 'url(path-to-your-image)',
+    backgroundImage: 'linear-gradient(to right, #16222A, #3A6073)',  // a cool gradient for a lively feel
   },
   section: {
     padding: '20px',
@@ -23,13 +21,13 @@ const styles = {
     padding: '10px',
     backgroundColor: '#fff',
     boxShadow: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
+    borderRadius: '10px',  // rounding corners for a smooth look
   },
   footer: {
     textAlign: 'center',
     padding: '20px 0',
     color: '#fff',
-    // Uncomment and add the path to your image
-    // backgroundImage: 'url(path-to-your-image)',
+    backgroundColor: '#1b1b2f',  // matching the footer with the main background color
   },
 };
 
@@ -45,7 +43,7 @@ const HomePage = () => {
 
       {/* Featured Courses Section */}
       <section style={styles.section}>
-        <h2>Featured Courses</h2>
+        <h2 style={{ color: '#fff' }}>Featured Courses</h2>
         {["Piano for Beginners", "Intermediate Guitar"].map(course => (
           <div key={course} style={styles.course}>
             <h3>{course}</h3>
@@ -55,13 +53,13 @@ const HomePage = () => {
 
       {/* Top Mentors Section */}
       <section style={styles.section}>
-        <h2>Top Mentors</h2>
+        <h2 style={{ color: '#fff' }}>Top Mentors</h2>
         {/* Map through mentor data */}
       </section>
 
       {/* Upcoming Live Classes Section */}
       <section style={styles.section}>
-        <h2>Upcoming Live Classes</h2>
+        <h2 style={{ color: '#fff' }}>Upcoming Live Classes</h2>
         {/* Map through live class data */}
       </section>
 

@@ -3,11 +3,13 @@ import VideoPlayer from '../components/VideoPlayer';
 import ChatBox from '../components/ChatBox';
 import LessonResources from '../components/LessonResources';
 
+// Add a musical font and import the font link in your CSS or JS file
+// `import 'https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap';`
 const styles = {
   main: {
-    fontFamily: 'Arial, sans-serif',
+    fontFamily: 'Rock Salt, Arial, sans-serif', // updated font
     color: '#333',
-    backgroundImage: 'linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)',
+    backgroundImage: 'url("/path/to/your/music/background/image.jpg")', // updated background to a music-themed image
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -21,6 +23,7 @@ const styles = {
     textTransform: 'uppercase',
     letterSpacing: '2px',
     fontSize: '2.5em',
+    color: '#007BFF', // updated title color to be more vibrant
   },
   videoChatContainer: {
     display: 'flex',

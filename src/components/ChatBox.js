@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const styles = {
   container: {
-    border: '1px solid #333',
+    border: '1px solid #007BFF', // updated border color to match title
     borderRadius: '10px',
     padding: '10px',
     maxWidth: '400px',
@@ -29,6 +29,14 @@ const styles = {
   input: {
     flex: 1,
     marginRight: '10px',
+  },
+  sendButton: {
+    color: '#fff',
+    backgroundColor: '#007BFF',
+    border: 'none',
+    borderRadius: '3px',
+    padding: '10px 20px',
+    cursor: 'pointer',
   },
 };
 

@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 
 const styles = {
   main: {
-    fontFamily: 'Arial, sans-serif',
+    fontFamily: '"Rock Salt", Arial, sans-serif', // updated font
     color: '#333',
-    backgroundImage: 'linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)',  // This can be replaced with a musical-themed background
+    backgroundImage: 'url(/path/to/your/music/background/image.jpg)', // replace with a musical-themed background
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -16,21 +16,26 @@ const styles = {
     flexDirection: 'column',
     alignItems: 'center',
     gap: '20px',
+    backgroundColor: '#fff',
+    padding: '20px',
+    borderRadius: '10px',
+    boxShadow: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
   },
   courseCard: {
     width: '100%',
     padding: '20px',
     borderRadius: '10px',
-    backgroundColor: '#fff',
+    backgroundColor: '#fafafa',
     boxShadow: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
+    margin: '10px 0',
   },
   courseTitle: {
     fontWeight: 'bold',
     fontSize: '20px',
-    color: '#007BFF',
+    color: '#007BFF', // updated title color to match other titles
   },
   continueButton: {
     padding: '10px 20px',
@@ -39,6 +44,7 @@ const styles = {
     color: '#fff',
     backgroundColor: '#28a745',
     cursor: 'pointer',
+    marginRight: '10px',
   },
   unenrollButton: {
     padding: '10px 20px',
@@ -60,6 +66,7 @@ const styles = {
     backgroundColor: '#007BFF',
   },
 };
+
 
 const courses = [
   {

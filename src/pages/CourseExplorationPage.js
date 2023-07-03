@@ -1,14 +1,14 @@
-// src/pages/CourseExplorationPage.js
 import React, { useState } from 'react';
 
 const styles = {
   main: {
-    fontFamily: 'Arial, sans-serif',
+    fontFamily: 'Rock Salt, cursive', // Use a musical-themed font
     color: '#333',
-    backgroundImage: 'linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)',  // This can be replaced with a musical-themed background
+    backgroundImage: 'linear-gradient(to right, #2b5876, #4e4376)',  // Musical-themed gradient background
     display: 'flex',
     justifyContent: 'space-around',
     flexWrap: 'wrap',
+    padding: '50px 0', // Add padding for better spacing
   },
   search: {
     padding: '20px',
@@ -25,6 +25,8 @@ const styles = {
     borderRadius: '5px',
     border: '1px solid #ccc',
     fontSize: '16px',
+    background: 'url(/path-to-music-icon.png) no-repeat scroll 7px 7px', // Add a musical search icon to the search bar
+    paddingLeft: '40px', // Make room for the musical search icon
   },
   courseList: {
     display: 'flex',
@@ -48,6 +50,7 @@ const styles = {
     height: '150px',
     objectFit: 'cover',
     borderRadius: '10px',
+    border: '5px solid #2b5876', // Add border to images for more emphasis
   },
   courseInfo: {
     display: 'flex',
@@ -72,8 +75,49 @@ const styles = {
     color: '#fff',
     backgroundColor: '#007BFF',
     cursor: 'pointer',
+    transform: 'translateY(0)', // Add transition for hover effect
+    transition: 'transform 0.3s ease', // Add transition for hover effect
+    ':hover': {
+      transform: 'translateY(-3px)', // Add hover effect
+    },
+  },
+  // Styling for popup
+  popup: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    backgroundColor: '#fff',
+    padding: '20px',
+    borderRadius: '10px',
+    width: '80%',
+    maxWidth: '500px',
+    zIndex: '1000',
+  },
+  closeButton: {
+    position: 'absolute',
+    right: '20px',
+    top: '20px',
+    fontSize: '20px',
+    border: 'none',
+    cursor: 'pointer',
+  },
+  registerButton: {
+    padding: '10px 20px',
+    border: 'none',
+    borderRadius: '3px',
+    color: '#fff',
+    backgroundColor: '#007BFF',
+    cursor: 'pointer',
+    marginTop: '10px',
+    transform: 'translateY(0)', // Add transition for hover effect
+    transition: 'transform 0.3s ease', // Add transition for hover effect
+    ':hover': {
+      transform: 'translateY(-3px)', // Add hover effect
+    },
   },
 };
+
 
 const courses = [
     {
