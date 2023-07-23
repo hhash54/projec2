@@ -1,97 +1,68 @@
 import React, { useState } from 'react';
+import { List, Input, Button, Avatar } from 'antd';
+import { useSpring, animated } from 'react-spring';
+import { UserOutlined, RobotOutlined } from '@ant-design/icons';
+import 'antd/dist/antd.css';
 
-const styles = {
-  container: {
-    border: '1px solid #007BFF', // updated border color to match title
-    borderRadius: '10px',
-    padding: '10px',
-    maxWidth: '400px',
-    margin: '20px auto',
-    backgroundColor: '#fafafa',
-    boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
-    transition: '0.3s',
-    overflow: 'auto',
-    height: '400px',
-  },
-  messageList: {
-    listStyleType: 'none',
-    padding: 0,
-    margin: 0,
-  },
-  message: {
-    padding: '10px',
-    borderBottom: '1px solid #ddd',
-  },
-  inputContainer: {
-    display: 'flex',
-    marginTop: '10px',
-  },
-  input: {
-    flex: 1,
-    marginRight: '10px',
-  },
-  sendButton: {
-    color: '#fff',
-    backgroundColor: '#007BFF',
-    border: 'none',
-    borderRadius: '3px',
-    padding: '10px 20px',
-    cursor: 'pointer',
-  },
-};
+const { TextArea } = Input;
 
 const prebuiltResponses = [
-    'Sounds great!',
-    'Interesting perspective.',
-    'Could you provide more details?',
-    'Thanks for sharing that.',
-    'I see where you’re coming from.',
-    // Add as many responses as you want
-  ];
-  
-  function ChatBox() {
-    const [message, setMessage] = useState('');
-    const [messages, setMessages] = useState([]);
-  
-    const handleMessageChange = (event) => {
-      setMessage(event.target.value);
-    };
-  
-    const handleSendMessage = () => {
-      if (message.trim() !== '') {
-        // Add user message to chat
-        setMessages(prevMessages => [...prevMessages, { text: message, sender: 'user' }]);
-        setMessage('');
-  
-        // Choose random prebuilt response and add to chat after delay
-        const randomResponse = prebuiltResponses[Math.floor(Math.random() * prebuiltResponses.length)];
-        setTimeout(() => {
-          setMessages(prevMessages => [...prevMessages, { text: randomResponse, sender: 'bot' }]);
-        }, 1000);  // 1 second delay
-      }
-    };
-  
-    return (
-      <div style={styles.container}>
-        <h2>Chat</h2>
-        <ul style={styles.messageList}>
-          {messages.map((message, index) => (
-            <li key={index} style={styles.message}>
-              <strong>{message.sender}: </strong> {message.text}
-            </li>
-          ))}
-        </ul>
-        <div style={styles.inputContainer}>
-          <input
-            type="text"
-            value={message}
-            onChange={handleMessageChange}
-            style={styles.input}
-          />
-          <button onClick={handleSendMessage}>Send</button>
-        </div>
+  'Sounds great!',
+  'Interesting perspective.',
+  'Could you provide more details?',
+  'Thanks for sharing that.',
+  'I see where you’re coming from.',
+];
+
+function ChatBox() {
+  const [message, setMessage] = useState('');
+  const [messages, setMessages] = useState([]);
+  const props = useSpring({ opacity: 1, from: { opacity: 0 } });
+
+  const handleMessageChange = (event) => {
+    setMessage(event.target.value);
+  };
+
+  const handleSendMessage = () => {
+    if (message.trim() !== '') {
+      setMessages((prevMessages) => [...prevMessages, { text: message, sender: 'user' }]);
+      setMessage('');
+
+      const randomResponse = prebuiltResponses[Math.floor(Math.random() * prebuiltResponses.length)];
+      setTimeout(() => {
+        setMessages((prevMessages) => [...prevMessages, { text: randomResponse, sender: 'bot' }]);
+      }, 1000);
+    }
+  };
+
+  return (
+    <div style={{ maxWidth: '600px', margin: '0 auto', padding: '20px' }}>
+      <h2>Chat</h2>
+      <List
+        itemLayout="horizontal"
+        dataSource={messages}
+        renderItem={(message, index) => (
+          <animated.div style={props} key={index}>
+            <List.Item>
+              <List.Item.Meta
+                avatar={
+                  <Avatar icon={message.sender === 'user' ? <UserOutlined /> : <RobotOutlined />} />
+                }
+                title={message.sender}
+                description={message.text}
+              />
+            </List.Item>
+          </animated.div>
+        )}
+      />
+      <div>
+        <TextArea rows={1} value={message} onChange={handleMessageChange} />
+        <Button type="primary" onClick={handleSendMessage} style={{ marginTop: '10px' }}>
+          Send
+        </Button>
       </div>
-    );
-  }
-  
-  export default ChatBox;
+    </div>
+  );
+}
+
+export default ChatBox;

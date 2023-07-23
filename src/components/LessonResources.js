@@ -29,6 +29,18 @@ const styles = {
     textAlign: 'center',
     color: '#007BFF', // updated title color to match other titles
   },
+  downloadButton: {
+    display: 'block',
+    width: '100%',
+    padding: '10px',
+    backgroundColor: '#007BFF',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '3px',
+    cursor: 'pointer',
+    marginTop: '10px',
+    textAlign: 'center',
+  },
 };
 
 function LessonResources() {
@@ -59,6 +71,7 @@ function LessonResources() {
           </li>
         ))}
       </ul>
+      <button style={styles.downloadButton}>Download All</button>
     </div>
   );
 }

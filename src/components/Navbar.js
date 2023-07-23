@@ -34,16 +34,18 @@ const styles = {
   },
 };
 
+// src/components/Navbar.js
+// ...
 function Navbar() {
   const [hoverIndex, setHoverIndex] = useState(null);
 
   return (
     <nav style={styles.nav}>
       <div style={styles.logoTitle}>
-        <img style={styles.logo} src="logo_url_here" alt="Logo" /> {/* Replace "logo_url_here" with the url of your logo */}
-        <h1>Virtuso</h1> {/* Replace "Title" with the title of your application */}
+        <img style={styles.logo} src="logo_url_here" alt="Logo" />
+        <h1>Virtuso</h1>
       </div>
-      {['/', '/explore', '/lesson', '/dashboard'].map((path, index) => (
+      {['/', '/explore', '/lesson', '/signin'].map((path, index) => (
         <Link 
           key={path}
           to={path}
@@ -63,3 +65,4 @@ function Navbar() {
 }
 
 export default Navbar;
+
