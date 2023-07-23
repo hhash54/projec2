@@ -5,9 +5,9 @@ import { motion } from 'framer-motion';
 function VideoPlayer() {
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
   const videoList = [
-    { title: 'Guitar Lesson', url: 'https://www.youtube.com/watch?v=example1' }, // Replace with actual URLs
-    { title: 'Violin Lesson', url: 'https://www.youtube.com/watch?v=example2' },
-    { title: 'Piano Lesson', url: 'https://www.youtube.com/watch?v=example3' },
+    { title: 'Guitar Lesson', url: 'https://www.youtube.com/watch?v=_kK1_apm-qs&pp=ygUOZ3V0aWFyIGxlc3NvbnM%3D' }, // Replace with actual URLs
+    { title: 'Violin Lesson', url: 'https://www.youtube.com/watch?v=SyoMvTgetGg&pp=ygUOdmlvbGluIGxlc3NvbnM%3D' },
+    { title: 'Piano Lesson', url: 'https://www.youtube.com/watch?v=4SXQ_wlbWog&pp=ygUNcGlhbm8gbGVzc29ucw%3D%3D' },
   ];
 
   const handlePrevious = () => {
