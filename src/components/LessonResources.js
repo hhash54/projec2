@@ -1,50 +1,8 @@
-import React from 'react';
-
-const styles = {
-  container: {
-    border: '1px solid #007BFF', // updated border color to match title
-    borderRadius: '10px',
-    padding: '10px',
-    maxWidth: '400px',
-    margin: '20px auto',
-    backgroundColor: '#fafafa',
-    boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
-    transition: '0.3s',
-    overflow: 'hidden',
-  },
-  list: {
-    listStyleType: 'none',
-    padding: 0,
-    margin: 0,
-  },
-  listItem: {
-    padding: '10px',
-    borderBottom: '1px solid #ddd',
-    transition: 'background-color 0.3s ease',
-  },
-  listItemHover: {
-    backgroundColor: '#f0f0f0',
-  },
-  title: {
-    textAlign: 'center',
-    color: '#007BFF', // updated title color to match other titles
-  },
-  downloadButton: {
-    display: 'block',
-    width: '100%',
-    padding: '10px',
-    backgroundColor: '#007BFF',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '3px',
-    cursor: 'pointer',
-    marginTop: '10px',
-    textAlign: 'center',
-  },
-};
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 function LessonResources() {
-  const [hoverIndex, setHoverIndex] = React.useState(null);
+  const [hoverIndex, setHoverIndex] = useState(null);
   const resources = [
     'Resource 1',
     'Resource 2',
@@ -52,26 +10,58 @@ function LessonResources() {
     // Add more resources as needed
   ];
 
+  const handleDownloadResource = (resourceName) => {
+    // Handle individual resource download
+    console.log(`Downloading ${resourceName}`);
+  };
+
+  const handleDownloadAll = () => {
+    // Handle all resources download
+    console.log("Downloading all resources");
+  };
+
   return (
-    <div style={styles.container}>
-      <h2 style={styles.title}>Lesson Resources</h2>
-      <ul style={styles.list}>
+    <div className="bg-gray-900 p-6 rounded-lg shadow-lg max-w-md mx-auto mt-10">
+      <motion.h2 
+        className="text-2xl font-bold mb-2 text-gray-200"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        Lesson Resources ({resources.length})
+      </motion.h2>
+      <ul className="divide-y divide-gray-700">
         {resources.map((resource, index) => (
-          <li
+          <motion.li 
             key={index}
-            style={
-              hoverIndex === index
-                ? { ...styles.listItem, ...styles.listItemHover }
-                : styles.listItem
-            }
+            className="py-4 text-gray-300"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
             onMouseEnter={() => setHoverIndex(index)}
             onMouseLeave={() => setHoverIndex(null)}
           >
             {resource}
-          </li>
+            <button 
+              className={`ml-4 text-xs rounded-md px-2 py-1 ${hoverIndex === index ? 'bg-blue-500 text-white' : 'bg-gray-800 text-gray-300'}`}
+              onClick={() => handleDownloadResource(resource)}
+            >
+              Download
+            </button>
+          </motion.li>
         ))}
+        {resources.length === 0 && <li className="py-4 text-gray-500 italic">No resources available.</li>}
       </ul>
-      <button style={styles.downloadButton}>Download All</button>
+      {resources.length > 0 && 
+        <motion.button 
+          className="mt-4 w-full py-2 bg-blue-500 text-white rounded-md cursor-pointer"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={handleDownloadAll}
+        >
+          Download All
+        </motion.button>
+      }
     </div>
   );
 }

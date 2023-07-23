@@ -10,7 +10,7 @@ const SignInPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    navigate('/dashboard');
+    navigate('/dashboard', { state: { name: username } });
   };
 
   const containerStyle = {

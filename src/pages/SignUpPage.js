@@ -1,9 +1,7 @@
-// SignUpPage.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import signupImage from '../images/signup.jpg'; 
 import { Link } from 'react-router-dom';
-
 
 const SignUpPage = () => {
   const [fullName, setFullName] = useState("");
@@ -11,6 +9,7 @@ const SignUpPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [dob, setDob] = useState("");
+  const [course, setCourse] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
@@ -18,76 +17,94 @@ const SignUpPage = () => {
     navigate('/confirmation', { state: { name: fullName } });
   };
 
-  const containerStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '100vh',
-    backgroundImage: `url(${signupImage})`,
-    backgroundSize: 'cover',
-    fontFamily: "'Open Sans', sans-serif",
-    color: '#333',
-  };
-
-  const formStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    padding: '20px',
-    borderRadius: '8px',
-    backgroundColor: 'rgba(255,255,255,0.9)', 
-    boxShadow: '0px 0px 10px 0px rgba(0,0,0,0.1)',
-  };
-
-  const inputStyle = {
-    padding: '10px',
-    margin: '10px 0',
-    borderRadius: '4px',
-    border: '1px solid #ddd',
-  };
-
-  const buttonStyle = {
-    padding: '10px',
-    margin: '10px 0',
-    borderRadius: '4px',
-    border: 'none',
-    background: 'linear-gradient(to right, #ff758c, #ff7eb3)',
-    color: 'white',
-    cursor: 'pointer',
-  };
-
-  const linkStyle = {
-    color: '#ff758c',
-    textDecoration: 'none',
-  };
-
   return (
-    <div style={containerStyle}>
-      <form onSubmit={handleSubmit} style={formStyle}>
-        <h2 style={{ color: '#ff758c', textAlign: 'center' }}>Sign Up</h2>
-        <label>
-          Full Name:
-          <input type="text" value={fullName} onChange={e => setFullName(e.target.value)} style={inputStyle} />
-        </label>
-        <label>
-          Username:
-          <input type="text" value={username} onChange={e => setUsername(e.target.value)} style={inputStyle} />
-        </label>
-        <label>
-          Email:
-          <input type="email" value={email} onChange={e => setEmail(e.target.value)} style={inputStyle} />
-        </label>
-        <label>
-          Password:
-          <input type="password" value={password} onChange={e => setPassword(e.target.value)} style={inputStyle} />
-        </label>
-        <label>
-          Date of Birth:
-          <input type="date" value={dob} onChange={e => setDob(e.target.value)} style={inputStyle} />
-        </label>
-        <input type="submit" value="Sign Up" style={buttonStyle} />
-        <p>Already have an account? <a href="/signin" style={linkStyle}>Sign In</a></p>
-      </form>
+    <div className="min-h-screen flex items-center justify-center bg-cover" style={{backgroundImage: `url(${signupImage})`}}>
+      <div className="w-full max-w-sm p-5 rounded-md shadow-lg bg-white bg-opacity-60 backdrop-blur-md">
+        <h2 className="text-center text-2xl font-bold text-gray-800 mb-5">Sign Up</h2>
+        <form className="space-y-5" onSubmit={handleSubmit}>
+          <input type="hidden" name="remember" defaultValue="true" />
+          <div className="rounded-md shadow-sm">
+            <input
+              type="text"
+              name="name"
+              id="name"
+              className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+              placeholder="Full Name"
+              value={fullName}
+              onChange={e => setFullName(e.target.value)}
+              required
+            />
+            <input
+              type="text"
+              name="username"
+              id="username"
+              className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+              placeholder="Username"
+              value={username}
+              onChange={e => setUsername(e.target.value)}
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              id="email"
+              className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+              placeholder="Email address"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              required
+            />
+            <input
+              type="password"
+              name="password"
+              id="password"
+              className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+              placeholder="Password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              required
+            />
+            <input
+              type="date"
+              name="dob"
+              id="dob"
+              className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+              placeholder="Date of Birth"
+              value={dob}
+              onChange={e => setDob(e.target.value)}
+              required
+            />
+            <select
+              name="course"
+              id="course"
+              className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+              value={course}
+              onChange={e => setCourse(e.target.value)}
+              required
+            >
+              <option disabled value="">Select a course</option>
+              <option value="guitar">Guitar</option>
+              <option value="piano">Piano</option>
+              <option value="violin">Violin</option>
+            </select>
+          </div>
+
+          <div>
+            <button
+              type="submit"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              Sign Up
+            </button>
+          </div>
+        </form>
+        <p className="mt-2 text-center text-sm text-gray-600">
+          Already have an account? 
+          <Link to="/signin" className="font-medium text-indigo-600 hover:text-indigo-500">
+            Sign In
+          </Link>
+        </p>
+      </div>
     </div>
   );
 };

@@ -9,9 +9,8 @@ import UserDashboard from './pages/UserDashboard';
 import SignInPage from './pages/SignInPage';
 import SignUpPage from './pages/SignUpPage';
 import Confirmation from './pages/Confirmation';
-import { Link } from 'react-router-dom';
 
-
+import "./App.css";
 function App() {
   return (
     <Router>

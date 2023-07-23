@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { IoIosMusicalNote } from "react-icons/io"; // Importing the music note icon
 
 const styles = {
   nav: {
@@ -17,10 +18,11 @@ const styles = {
     color: '#fff',
     display: 'flex',
     alignItems: 'center',
-    
   },
   logo: {
     marginRight: '10px',
+    color: '#fff',
+    fontSize: '2rem', // You can adjust the size of the logo here
   },
   link: {
     color: '#fff',
@@ -42,7 +44,7 @@ function Navbar() {
   return (
     <nav style={styles.nav}>
       <div style={styles.logoTitle}>
-        <img style={styles.logo} src="logo_url_here" alt="Logo" />
+        <IoIosMusicalNote style={styles.logo} /> {/* Using the music note as logo */}
         <h1>Virtuso</h1>
       </div>
       {['/', '/explore', '/lesson', '/signin'].map((path, index) => (
@@ -65,4 +67,3 @@ function Navbar() {
 }
 
 export default Navbar;
-

@@ -1,4 +1,6 @@
+// src/pages/HomePage.js
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import home from '../images/home.jpg';
 
 const styles = {
@@ -38,12 +40,16 @@ const styles = {
 };
 
 const HomePage = () => {
+  const navigate = useNavigate();
+
   return (
     <main style={styles.main}>
       <h1 style={styles.header}>Discover the Perfect Note at Virtuoso Music Learning!</h1>
       <p style={styles.subheader}>
       Unlock Your Musical Potential with Expert Guidance and Passionate Education   </p>
-      <button style={styles.button}>Enroll Now</button>
+      <button style={styles.button} onClick={() => navigate("/signup")}>
+        Enroll Now
+      </button>
     </main>
   );
 };
